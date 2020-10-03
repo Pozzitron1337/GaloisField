@@ -1,3 +1,4 @@
+import GaloisField.GF2mNB;
 import org.junit.Test;
 import java.math.BigInteger;
 import static org.junit.Assert.assertEquals;

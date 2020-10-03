@@ -1,3 +1,5 @@
+package GaloisField;
+
 import java.math.BigInteger;
 
 /*Implementation of Galois Field with optimal normal basis

@@ -1,7 +1,13 @@
+import GaloisField.GF2m;
+import GaloisField.GF2mNB;
+import GaloisField.GF2mPB;
+
+
 import java.math.BigInteger;
 import java.util.Random;
 
 public class Main {
+
     public static void TestingGFPB(){
         int m=509;
         String generaror509bit="";
@@ -270,11 +276,44 @@ public class Main {
 
     }
 
+    public static void findZeros(){
+        String generator="100101";
+        GF2mPB one=new GF2mPB("1",generator,2);
+        GF2mPB l1=new GF2mPB("1111",generator,2);
+        GF2mPB l2=new GF2mPB("11011",generator,2);
+        GF2mPB l3=new GF2mPB("11",generator,2);
+        GaloisField.GF2mPB x;
+        GaloisField.GF2mPB res;
+        for(int i=0;i<31;i++) {
+            x=new GaloisField.GF2mPB(Integer.toBinaryString(i),generator,2);
+            res=one.add(l1.mul(x)).add(l2.mul(x.square())).add(l3.mul(x.square().mul(x)));
+            System.out.println("\\Lambda("+Integer.toBinaryString(i)+") = "+res+"\\linebreak");
+            res=null;
+        }
+        System.out.println(l3.pow(BigInteger.valueOf(2)));
+    }
+    public static void findZerosOmega(){
+        String generator="101001";
+        GF2mPB one=new GF2mPB("1",generator,2);
+        GaloisField.GF2mPB x;
+        GaloisField.GF2mPB res;
+        for(int i=0;i<32;i++){
+            x=new GF2mPB(Integer.toBinaryString(i),generator,2);
+            res=x.pow(2).add(x.pow(4)).add(x.pow(5)).add(x.pow(7)).add(x.pow(9)).add(x.pow(11)).add(x.pow(14)).add(x.pow(16)).add(x.pow(17)).add(x.pow(18)).add(x.pow(19)).add(x.pow(21));
+            System.out.println(Integer.toBinaryString(i)+" = "+res);
+            res=null;
+        }
+    }
+
+
     public static void main(String[] args) {
-        TestingGFNB();
+        /*TestingGFNB();
         TestingGFPB();
         ProfillingPB();
-        ProfillingNB();
+        ProfillingNB();*/
+        //findZeros();
+        //RS();
+        findZerosOmega();
     }
 
 }

@@ -1,3 +1,5 @@
+package GaloisField;
+
 import java.math.BigInteger;
 import java.lang.*;
 
@@ -62,10 +64,10 @@ public class GF2mPB extends GF2m {
         int binLen=Integer.toBinaryString(exp).length();
         for(int i=binLen-1;i>=0;i--){
             power=(GF2mPB) power.square();
-            if((exp&1)==1){
+            if(((exp>>i)&1)==1){
                 power=(GF2mPB)power.mul(this);
             }
-            exp=(exp >> 1);
+            //exp=(exp >> 1);
         }
         return power;
     }
